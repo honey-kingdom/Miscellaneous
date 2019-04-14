@@ -32,6 +32,18 @@ int main(void)
 		else std::cout << "Unable to open file";
 	}
 
+	{ // obtaining file size
+		std::ifstream myfile("out/example.txt", std::ios::binary);
+
+		std::streampos begin = myfile.tellg(); // tellg() returns get position of the stream (tellp() for put position).
+		myfile.seekg(0, std::ios::end); // seekg() moves get position of the stream (by an offset relative to the end of the stream in this case).
+		std::streampos end = myfile.tellg();
+
+		myfile.close();
+
+		std::cout << "size is: " << (end - begin) << " bytes.\n";
+	}
+
 	std::cin.get();	
 	return 0;
 }
