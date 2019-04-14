@@ -44,6 +44,25 @@ int main(void)
 		std::cout << "size is: " << (end - begin) << " bytes.\n";
 	}
 
+	{
+		std::ifstream file("out/example.txt", std::ios::in | std::ios::binary | std::ios::ate); // get pointer positioned at the end of the file
+		if (file.is_open())
+		{
+			std::streampos size = file.tellg();
+			char* memblock = new char[size];
+
+			file.seekg(0, std::ios::beg);
+			file.read(memblock, size);
+
+			file.close();
+
+			std::cout << "The entire file content is in memory." << std::endl;
+
+			delete[] memblock;
+		}
+		else std::cout << "Unable to open file";
+	}
+
 	std::cin.get();	
 	return 0;
 }
