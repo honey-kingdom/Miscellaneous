@@ -8,7 +8,7 @@ throw(int *, int) // This specifier has been deprecated in C++11 since codes can
         throw ptr;
     if(x == 0)
         throw x;
-    /* Some functionaliry */
+    /* Some functionality */
 }
 
 
